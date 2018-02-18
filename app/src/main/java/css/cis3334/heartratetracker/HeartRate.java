@@ -15,7 +15,7 @@ public class HeartRate {
     private Integer range;          // which range this heart rate is in, used as index into arrays below
 
     String rangeNames[] = {"Resting", "Moderate", "Endurance", "Aerobic","Anaerobic","Red zone"};
-    String rangeDescriptions[] = {"In active or resting", "Weight maintenance and warm up", "Fitness and fat burning", "Cardio training and endurance","Hardcore interval training","Maximum Effort"};
+    String rangeDescriptions[] = {"Inactive or resting", "Weight maintenance and warm up", "Fitness and fat burning", "Cardio training and endurance","Hardcore interval training","Maximum Effort"};
     Double rangeBounds[] = {.50, .60, .70, .80, .90, 1.00};
 
     public HeartRate(Integer heartRate, Integer age) {
