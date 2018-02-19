@@ -15,8 +15,18 @@
         android:id="@+id/textViewSelect"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/allerta"
+        android:lineSpacingExtra="8sp"
         android:text="Select a Heart Rate"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
+        android:textColor="?android:attr/colorPrimaryDark"
+        android:textSize="26sp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="8sp" />
 
     <ListView
         android:id="@+id/listViewHeartRates"

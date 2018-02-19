@@ -43,15 +43,37 @@ public class HeartRateAdapter  extends ArrayAdapter<HeartRate> {
      */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        //
+
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.heart_rate_row, null);
         //get the heart rate we are displaying
         HeartRate hr = hrList.getHeartRate(position);
 
+        //return pulse rate based on selection
         TextView tvPulse=(TextView)view.findViewById(R.id.textViewPulse);
-        tvPulse.setText(hr.getPulse().toString());
-                return(view);
+        tvPulse.setText((hr.getPulse().toString()) + "\n" + (hr.getRangeName().toString()) + " (" + (hr.getRangeDescription()) + ")");
+
+        //set background color based range name
+        if(hr.getRangeName().toString().equals("Resting")) {
+            tvPulse.setBackgroundColor(ContextCompat.getColor(context, R.color.colorZone1));
+        }
+        if(hr.getRangeName().toString().equals("Moderate")) {
+            tvPulse.setBackgroundColor(ContextCompat.getColor(context, R.color.colorZone2));
+        }
+        if(hr.getRangeName().toString().equals("Endurance")) {
+            tvPulse.setBackgroundColor(ContextCompat.getColor(context, R.color.colorZone3));
+        }
+        if(hr.getRangeName().toString().equals("Aerobic")) {
+            tvPulse.setBackgroundColor(ContextCompat.getColor(context, R.color.colorZone4));
+        }
+        if(hr.getRangeName().toString().equals("Anaerobic")) {
+            tvPulse.setBackgroundColor(ContextCompat.getColor(context, R.color.colorZone5));
+        }
+        if(hr.getRangeName().toString().equals("Red Zone")) {
+            tvPulse.setBackgroundColor(ContextCompat.getColor(context, R.color.colorZone6));
+        }
+
+        return(view);
     }
 
 }

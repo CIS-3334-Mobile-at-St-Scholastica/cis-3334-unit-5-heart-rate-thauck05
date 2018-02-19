@@ -47,7 +47,7 @@ public class HeartRate {
         return rangeNames[range];
     }
 
-    public String getRangeDescrtiption() {
+    public String getRangeDescription() {
         calcHeartRange(age);
         return rangeDescriptions[range];
     }
