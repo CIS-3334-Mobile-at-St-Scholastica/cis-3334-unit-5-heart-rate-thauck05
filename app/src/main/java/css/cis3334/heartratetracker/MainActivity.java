@@ -1,6 +1,6 @@
 package css.cis3334.heartratetracker;
 
-import android.speech.tts.TextToSpeech;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +16,9 @@ public class MainActivity extends AppCompatActivity {
     ListView lvHeartRates;              // List view of random heart rates
     TextView tvSelect;                  // Text view for user selection
 
+    public static final String HEARTRATE_KEY = "HEARTRATE_KEY";
+    // ArrayList<HeartRAte> basicheartRateList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         heartRateList.InitRandomElderly();
 
         // display random heart rates
-        hrAdapter = new HeartRateAdapter(this, R.layout.heart_rate_row, R.id.textViewPulse, heartRateList);
+        hrAdapter = new HeartRateAdapter(this, R.layout.heart_rate_row, R.id.textViewRangeDetail, heartRateList);
         hrAdapter.setDropDownViewResource(R.layout.heart_rate_row);
         lvHeartRates.setAdapter(hrAdapter);
 
@@ -38,6 +41,10 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
                 HeartRate hr = (HeartRate) parent.getItemAtPosition(position);
                 tvSelect.setText("You selected: " + hr.toString());
+
+                Intent detailActIntent = new Intent(parent.getContext(), HeartDetailActivity.class);
+                detailActIntent.putExtra(HEARTRATE_KEY, hr);
+                startActivity(detailActIntent);
 
             }
         });
